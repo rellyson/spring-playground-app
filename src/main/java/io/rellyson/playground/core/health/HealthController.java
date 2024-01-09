@@ -1,5 +1,6 @@
 package io.rellyson.playground.core.health;
 
+import io.rellyson.playground.core.entities.HealthResponse;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;

@@ -2,7 +2,7 @@ package io.rellyson.playground;
 
 import io.rellyson.playground.core.error.DefaultErrorHandlingController;
 import io.rellyson.playground.core.health.HealthController;
-import io.rellyson.playground.core.health.HealthResponse;
+import io.rellyson.playground.core.entities.HealthResponse;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;

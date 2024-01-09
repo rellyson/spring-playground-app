@@ -1,5 +1,6 @@
 package io.rellyson.playground.core.error;
 
+import jakarta.validation.ConstraintViolation;
 import jakarta.validation.ConstraintViolationException;
 import org.junit.jupiter.api.Test;
 import org.springframework.http.HttpMethod;
@@ -8,6 +9,9 @@ import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 import org.springframework.web.HttpRequestMethodNotSupportedException;
 import org.springframework.web.servlet.resource.NoResourceFoundException;
+
+import java.util.HashSet;
+import java.util.Set;
 
 import static org.mockito.Mockito.*;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.*;
@@ -51,7 +55,9 @@ public class DefaultErrorHandlingControllerTests {
     @Test
     void whenValidationError_ReturnsBadRequest() throws Exception {
         String error = createApiError(HttpStatus.BAD_REQUEST, "name field not valid");
-        doAnswer(a -> { throw new ConstraintViolationException("name field not valid", null); })
+        Set<? extends ConstraintViolation<?>> violations = new HashSet<>();
+
+        doAnswer(a -> { throw new ConstraintViolationException("name field not valid", violations); })
                 .when(this.fakeController).fakeRequest();
 
         this.mockMvc.perform(get("/fake"))
@@ -74,7 +80,7 @@ public class DefaultErrorHandlingControllerTests {
         return "{" +
                 "\"message\":" + "\"" + status.getReasonPhrase()+ "\"," +
                 "\"statusCode\":" + status.value()+ "," +
-                "\"reason\": " + "\"" + reason + "\"" +
+                "\"reasons\": [" + "\"" + reason + "\"" + "]" +
                 "}";
     }
 }

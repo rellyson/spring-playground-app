@@ -1,6 +1,6 @@
 FROM maven:3-eclipse-temurin-17 as builder
 WORKDIR /tmp/build
-ENV JAR_FILE=target/application.jar
+ARG JAR_FILE=target/application.jar
 
 COPY . .
 RUN mvn clean install package
@@ -10,7 +10,7 @@ RUN java -Djarmode=layertools -jar $JAR_FILE extract
 # ---------
 FROM eclipse-temurin:17-jre-alpine
 WORKDIR /usr/src/app
-ENV SPRING_PROFILES_ACTIVE=container
+ENV SPRING_PROFILES_ACTIVE=production
 
 # create rootless group/user
 RUN addgroup --system java && adduser -S -H -s /usr/sbin/nologin -G java java

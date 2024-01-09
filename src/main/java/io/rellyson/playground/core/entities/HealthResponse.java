@@ -1,6 +1,4 @@
-package io.rellyson.playground.core.health;
-
-import org.springframework.http.HttpStatus;
+package io.rellyson.playground.core.entities;
 
 public record HealthResponse(String message,
                              Integer statusCode,
