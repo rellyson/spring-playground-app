@@ -2,7 +2,7 @@ server:
   address: 127.0.0.1
 
 jdbc:
-  url: jdbc:postgresql://localhost:5432/pg-jdbc
+  url: jdbc:postgresql://localhost:5432/jdbc_test
   username: postgres
   password: topsecret
   connTimeoutSeconds: 10
