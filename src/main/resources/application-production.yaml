@@ -4,3 +4,9 @@ spring:
 
 server:
   address: 0.0.0.0
+
+jdbc:
+  # driverClassName: org.postgresql.Driver
+  url: ${DATABASE_URL}
+  username: ${DATABASE_USERNAME}
+  password: ${DATABASE_PASSWORD}
