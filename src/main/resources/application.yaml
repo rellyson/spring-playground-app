@@ -7,3 +7,14 @@ server:
   servlet:
     context-path: /api
   shutdown: graceful
+
+springdoc:
+  api-docs:
+    enabled: true
+  swagger-ui:
+    enabled: true
+    path: /swagger-ui
+    tryItOutEnabled: true
+    docExpansion: list
+    syntaxHighlight:
+      theme: nord

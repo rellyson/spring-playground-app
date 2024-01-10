@@ -20,7 +20,7 @@ import java.time.Instant;
 
 @Component
 @Profile("production")
-public class JsonLoggingFilter extends OncePerRequestFilter {
+public class StructuredLoggingFilter extends OncePerRequestFilter {
 
     private final Logger logger = LoggerFactory.getLogger(LoggingFilter.class);
 
